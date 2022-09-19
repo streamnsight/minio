@@ -8,7 +8,8 @@ ENV GO111MODULE on
 
 RUN  \
      apk add --no-cache git && \
-     git clone https://github.com/minio/minio && cd minio && \
+     git clone https://github.com/streamnsight/minio.git && cd minio && \
+     git checkout RELEASE.2019-08-14T20-37-41Z-oci && \
      go install -v -ldflags "$(go run buildscripts/gen-ldflags.go)" && \
      cd dockerscripts; go build -tags kqueue -ldflags "-s -w" -o /usr/bin/healthcheck healthcheck.go
 
