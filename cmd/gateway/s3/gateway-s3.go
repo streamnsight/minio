@@ -226,9 +226,9 @@ func newS3(urlStr string) (*miniogo.Core, error) {
 
 	// var serverRegion string
 	serverRegion := os.Getenv("MINIO_REGION")
-	// if serverRegion := os.Getenv("MINIO_REGION"); serverRegion == "" {
-	// 	serverRegion = s3utils.GetRegionFromURL(*u)
-	// }
+	if serverRegion == "" {
+		serverRegion = s3utils.GetRegionFromURL(*u)
+	}
 
 	options := miniogo.Options{
 		Creds:        creds,
